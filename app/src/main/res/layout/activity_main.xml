@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/padding_large">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="40dp"
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="@string/app_name"/>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/status_initializing"
+            android:textSize="@dimen/text_medium"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:id="@+id/tvKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="@dimen/text_xlarge"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            android:textIsSelectable="true"
+            android:fontFamily="monospace"/>
+
+        <Button
+            android:id="@+id/btnAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="40dp"
+            android:text="@string/btn_enable_admin"/>
+
+        <Button
+            android:id="@+id/btnPerms"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="12dp"
+            android:text="@string/btn_grant_perms"/>
+
+        <Button
+            android:id="@+id/btnSetup"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="12dp"
+            android:text="@string/btn_start_setup"/>
+
+        <Button
+            android:id="@+id/btnHide"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/secondary"
+            android:text="@string/btn_hide_start"/>
+
+    </LinearLayout>
+</ScrollView>
