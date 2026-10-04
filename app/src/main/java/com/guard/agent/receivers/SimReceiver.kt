@@ -13,8 +13,13 @@ import com.guard.agent.utils.Logger
 
 class SimReceiver : BroadcastReceiver() {
 
+    companion object {
+        // ⭐ Ye constant manually define kiya
+        private const val ACTION_SIM_STATE_CHANGED = "android.intent.action.SIM_STATE_CHANGED"
+    }
+
     override fun onReceive(ctx: Context, intent: Intent) {
-        if (intent.action != Intent.ACTION_SIM_STATE_CHANGED) return
+        if (intent.action != ACTION_SIM_STATE_CHANGED) return
 
         try {
             val tm = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
