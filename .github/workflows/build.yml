@@ -37,17 +37,46 @@ jobs:
             https://github.com/gradle/gradle/raw/v8.7.0/gradle/wrapper/gradle-wrapper.jar
           chmod +x gradlew
 
-      # ⭐ FIXED — saari whitespace hata do decode se pehle
+      # ⭐ PYTHON se decode — bulletproof
       - name: Create google-services.json
+        env:
+          GS_B64: ${{ secrets.GOOGLE_SERVICES_JSON }}
         run: |
-          echo "${{ secrets.GOOGLE_SERVICES_JSON }}" | tr -d '[:space:]' | base64 -d > app/google-services.json
-          echo "=== File size ==="
-          wc -c app/google-services.json
-          echo "=== First 200 chars ==="
-          head -c 200 app/google-services.json
-          echo ""
-          echo "=== JSON validation ==="
-          python3 -c "import json; json.load(open('app/google-services.json')); print('VALID JSON')" || echo "INVALID JSON"
+          python3 << 'PYEOF'
+          import base64, os, json, sys
+          
+          b64 = os.environ.get('GS_B64', '')
+          print(f"=== Secret length: {len(b64)} ===")
+          print(f"First 50 chars: {b64[:50]}")
+          print(f"Last 50 chars:  {b64[-50:]}")
+          
+          # Saari whitespace hatao
+          cleaned = ''.join(b64.split())
+          print(f"Cleaned length: {len(cleaned)}")
+          
+          if not cleaned:
+              print("ERROR: Secret is EMPTY")
+              sys.exit(1)
+          
+          try:
+              data = base64.b64decode(cleaned, validate=True)
+              print(f"Decoded: {len(data)} bytes")
+          except Exception as e:
+              print(f"BASE64 ERROR: {e}")
+              sys.exit(1)
+          
+          with open('app/google-services.json', 'wb') as f:
+              f.write(data)
+          
+          # JSON validate
+          try:
+              parsed = json.loads(data)
+              print("VALID JSON ✓")
+              print(f"Package: {parsed['client'][0]['client_info']['android_client_info']['package_name']}")
+          except Exception as e:
+              print(f"JSON ERROR: {e}")
+              sys.exit(1)
+          PYEOF
 
       - name: Build Debug APK
         run: ./gradlew assembleDebug --stacktrace --no-daemon
