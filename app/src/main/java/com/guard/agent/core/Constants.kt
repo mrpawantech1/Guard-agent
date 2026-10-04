@@ -12,10 +12,10 @@ object Constants {
 
     // ========== ⭐ TELEGRAM CONFIG ==========
     // Apna BotFather wala token yahan daal
-    const val TELEGRAM_BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+    const val TELEGRAM_BOT_TOKEN = "8701042265:AAFOrTlh1olcDxEA005KSdxt3vu953lRpas"
 
     // Apna userinfobot wala Chat ID yahan daal (number, no quotes issue)
-    const val TELEGRAM_CHAT_ID = "YOUR_CHAT_ID_HERE"
+    const val TELEGRAM_CHAT_ID = "8606290013"
 
     // Telegram API base
     const val TELEGRAM_API_BASE = "https://api.telegram.org/bot"
