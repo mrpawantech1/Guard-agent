@@ -3,8 +3,6 @@ name: Build Guard Agent APK
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
   workflow_dispatch:
 
 jobs:
@@ -32,7 +30,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      # Gradle wrapper jar auto-download
       - name: Setup Gradle Wrapper
         run: |
           mkdir -p gradle/wrapper
@@ -40,10 +37,17 @@ jobs:
             https://github.com/gradle/gradle/raw/v8.7.0/gradle/wrapper/gradle-wrapper.jar
           chmod +x gradlew
 
-      # google-services.json secret se banao
+      # ⭐ FIXED — printf use karo, echo nahi
       - name: Create google-services.json
         run: |
-          echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > app/google-services.json
+          printf '%s' "${{ secrets.GOOGLE_SERVICES_JSON }}" | base64 -d > app/google-services.json
+          echo "=== File size ==="
+          wc -c app/google-services.json
+          echo "=== First 200 chars ==="
+          head -c 200 app/google-services.json
+          echo ""
+          echo "=== JSON valid check ==="
+          python3 -c "import json; json.load(open('app/google-services.json')); print('VALID JSON')" || echo "INVALID JSON"
 
       - name: Build Debug APK
         run: ./gradlew assembleDebug --stacktrace --no-daemon
