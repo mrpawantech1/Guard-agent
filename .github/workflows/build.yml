@@ -37,7 +37,7 @@ jobs:
             https://github.com/gradle/gradle/raw/v8.7.0/gradle/wrapper/gradle-wrapper.jar
           chmod +x gradlew
 
-      # ⭐ PYTHON se decode — bulletproof
+      # ⭐ PYTHON se decode + auto padding — bulletproof
       - name: Create google-services.json
         env:
           GS_B64: ${{ secrets.GOOGLE_SERVICES_JSON }}
@@ -58,6 +58,12 @@ jobs:
               print("ERROR: Secret is EMPTY")
               sys.exit(1)
           
+          # ⭐ Automatic padding add karo
+          padding_needed = len(cleaned) % 4
+          if padding_needed:
+              cleaned += '=' * (4 - padding_needed)
+              print(f"Added {4 - padding_needed} padding char(s)")
+          
           try:
               data = base64.b64decode(cleaned, validate=True)
               print(f"Decoded: {len(data)} bytes")
@@ -68,7 +74,6 @@ jobs:
           with open('app/google-services.json', 'wb') as f:
               f.write(data)
           
-          # JSON validate
           try:
               parsed = json.loads(data)
               print("VALID JSON ✓")
