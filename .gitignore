@@ -1,0 +1,55 @@
+# Built files
+*.apk
+*.aar
+*.ap_
+*.aab
+*.dex
+
+# Java
+*.class
+
+# Generated
+bin/
+gen/
+out/
+release/
+
+# Gradle
+.gradle/
+build/
+
+# Local config
+local.properties
+
+# Proguard
+proguard/
+
+# Logs
+*.log
+
+# IDE
+.navigation/
+captures/
+*.iml
+.idea/
+workspace.xml
+tasks.xml
+usage.txt
+
+# Keystore
+*.jks
+*.keystore
+
+# Native
+.externalNativeBuild
+.cxx/
+
+# Google Services (IMPORTANT)
+app/google-services.json
+
+# Firebase
+.firebase/
+
+# OS
+.DS_Store
+Thumbs.db
